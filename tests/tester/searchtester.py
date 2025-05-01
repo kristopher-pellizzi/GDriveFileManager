@@ -9,5 +9,6 @@ class SearchTester(BaseTester):
         self._filename = name
 
     def run(self):
-        print(f"Searching for {self._filename}")
-        return self._gdrivemanager.searchFile(f"name='{self._filename}'")
+        print(self._gdrivemanager.searchFile(f"name='{self._filename}'"))
+
+        return True

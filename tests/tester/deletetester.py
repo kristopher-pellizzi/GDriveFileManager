@@ -8,4 +8,6 @@ class DeleteTester(BaseTester):
         self._filename = filename
 
     def run(self):
-        return self._gdrivemanager.deleteFile(self._filename)
+        print(self._gdrivemanager.deleteFile(self._filename))
+
+        return True

@@ -4,71 +4,10 @@ import argparse as ap
 from typing import Any, Dict
 
 if __name__ == '__main__':
+    # Required to add the main src code into the module finding paths list
     sys.path.append(os.path.abspath(os.path.join(sys.path[0], '..', 'src')))
 
 from tester import *
-
-def get_files_test():
-    tester = GetFilesTester()
-
-    print(tester.run())
-
-    return True
-
-def search_test():
-    f1 = "test.txt"
-    f2 = "doesnotexists"
-    tester = SearchTester(f1)
-    print("RESPONSE:")
-    print(tester.run())
-
-    tester.set_search_filename(f2)
-    print()
-    print("RESPONSE:")
-    print(tester.run())
-
-    return True
-
-
-def get_file_test():
-    tester = GetFileTester()
-
-    print(tester.run())
-
-    return True
-
-
-def download_test():
-    tester = DownloadTester()
-
-    print(tester.run())
-
-    return True
-
-
-def update_test():
-    tester = UpdateTester()
-
-    print(tester.run())
-
-    return True
-
-
-def create_test():
-    tester = CreateTester()
-
-    print(tester.run())
-
-    return True
-
-
-def delete_test():
-    tester = DeleteTester()
-
-    print(tester.run())
-
-    return True
-
 
 def run_tests(tests, exec_list):
     test_results = dict()
@@ -79,7 +18,7 @@ def run_tests(tests, exec_list):
     for name,test in tests.items():
         print()
         print(f"Running test {name}")
-        res = test()
+        res = test.run()
         print(f"Test {name} completed")
         test_results[name] = res
 
@@ -102,13 +41,13 @@ def parse_args(tests: Dict[str, Any]):
 
 def main():
     tests = {
-        'getfiles': get_files_test,
-        'search': search_test,
-        'get': get_file_test,
-        'download': download_test,
-        'update': update_test,
-        'create': create_test,
-        'delete': delete_test
+        'getfiles': GetFilesTester(),
+        'search': SearchTester(),
+        'get': GetFileTester(),
+        'download': DownloadTester(),
+        'update': UpdateTester(),
+        'create': CreateTester(),
+        'delete': DeleteTester()
     }
 
     args = parse_args(tests)

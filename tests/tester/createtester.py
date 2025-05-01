@@ -18,4 +18,6 @@ class CreateTester(BaseTester):
         self._additionalMetadata = additionalMetadata
 
     def run(self):
-        return self._gdrivemanager.createFile(self._filepath, self._filename, self._parentFileId, self._additionalMetadata)
+        print(self._gdrivemanager.createFile(self._filepath, self._filename, self._parentFileId, self._additionalMetadata))
+
+        return True

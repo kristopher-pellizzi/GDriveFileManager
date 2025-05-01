@@ -8,4 +8,6 @@ class GetFileTester(BaseTester):
         self._fileId = files[0]['id']
 
     def run(self):
-        return self._gdrivemanager.getFile(self._fileId)
+        print(self._gdrivemanager.getFile(self._fileId))
+
+        return True

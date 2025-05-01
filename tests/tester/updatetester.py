@@ -12,4 +12,6 @@ class UpdateTester(BaseTester):
         self._metadata = metadata
 
     def run(self):
-        return self._gdrivemanager.updateFile(self._fileId, self._filepath, self._metadata)
+        print(self._gdrivemanager.updateFile(self._fileId, self._filepath, self._metadata))
+
+        return True

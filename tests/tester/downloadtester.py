@@ -9,4 +9,6 @@ class DownloadTester(BaseTester):
         self._outPath = outputPath
 
     def run(self):
-        return self._gdrivemanager.downloadFile(self._filename, self._outPath)
+        print(self._gdrivemanager.downloadFile(self._filename, self._outPath))
+
+        return True
