@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "GoogleDriveFileManager"
+authors = [
+    {name = "Kristopher F. Pellizzi", email = "krijojo@gmail.com"},
+]
+description = "Simple package to easily manage and manipulate files stored in Google Drive"
+readme = "README.md"
+requires-python = ">=3.12"
+keywords = ["google", "drive", "file", "manager"]
+license = "MIT"
+
+dynamic = ["version", "dependencies"]
+
+[tool.setuptools.dynamic]
+version = {attr = "googledrivefilemanager.__version__.__version__"}  # any module attribute compatible with ast.literal_eval
+dependencies = {file = ["requirements.txt"]}
