@@ -1,5 +1,6 @@
 import os
 import sys
+import logging
 from .basetester import BaseTester
 
 class DeleteTester(BaseTester):
@@ -8,6 +9,7 @@ class DeleteTester(BaseTester):
         self._filename = filename
 
     def run(self):
-        print(self._gdrivemanager.deleteFile(self._filename))
+        logger = logging.getLogger(__name__)
+        logger.debug(self._gdrivemanager.deleteFile(self._filename))
 
         return True

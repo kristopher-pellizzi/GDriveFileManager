@@ -1,5 +1,6 @@
 import os
 import sys
+import logging
 from .basetester import BaseTester
 
 class DownloadTester(BaseTester):
@@ -9,6 +10,7 @@ class DownloadTester(BaseTester):
         self._outPath = outputPath
 
     def run(self):
-        print(self._gdrivemanager.downloadFile(self._filename, self._outPath))
+        logger = logging.getLogger(__name__)
+        logger.debug(self._gdrivemanager.downloadFile(self._filename, self._outPath))
 
         return True

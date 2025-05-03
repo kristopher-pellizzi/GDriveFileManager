@@ -1,7 +1,9 @@
+import logging
 from .basetester import BaseTester
 
 class GetFilesTester(BaseTester):
     def run(self):
-        print(self._gdrivemanager.getFilesList())
+        logger = logging.getLogger(__name__)
+        logger.debug(self._gdrivemanager.getFilesList())
 
         return True

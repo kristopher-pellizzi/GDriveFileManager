@@ -1,3 +1,4 @@
+import logging
 from .basetester import BaseTester
 
 class SearchTester(BaseTester):
@@ -9,6 +10,7 @@ class SearchTester(BaseTester):
         self._filename = name
 
     def run(self):
-        print(self._gdrivemanager.searchFile(f"name='{self._filename}'"))
+        logger = logging.getLogger(__name__)
+        logger.debug(self._gdrivemanager.searchFile(f"name='{self._filename}'"))
 
         return True

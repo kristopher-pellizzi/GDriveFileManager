@@ -1,5 +1,6 @@
 import os
 import sys
+import logging
 from .basetester import BaseTester
 
 class UpdateTester(BaseTester):
@@ -12,6 +13,7 @@ class UpdateTester(BaseTester):
         self._metadata = metadata
 
     def run(self):
-        print(self._gdrivemanager.updateFile(self._fileId, self._filepath, self._metadata))
+        logger = logging.getLogger(__name__)
+        logger.debug(self._gdrivemanager.updateFile(self._fileId, self._filepath, self._metadata))
 
         return True

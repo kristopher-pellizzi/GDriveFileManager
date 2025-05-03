@@ -1,3 +1,4 @@
+import logging
 from .basetester import BaseTester
 
 class GetFileTester(BaseTester):
@@ -8,6 +9,7 @@ class GetFileTester(BaseTester):
         self._fileId = files[0]['id']
 
     def run(self):
-        print(self._gdrivemanager.getFile(self._fileId))
+        logger = logging.getLogger(__name__)
+        logger.debug(self._gdrivemanager.getFile(self._fileId))
 
         return True

@@ -1,5 +1,6 @@
 import os
 import sys
+import logging
 from .basetester import BaseTester
 
 class CreateTester(BaseTester):
@@ -13,11 +14,15 @@ class CreateTester(BaseTester):
         super().__init__()
         self._filepath = filepath
         self._filename = filename
-        files = self._gdrivemanager.searchFile(f"name='{parentName}'")
-        self._parentFileId = files[0]['id']
+        if parentName is not None:
+            files = self._gdrivemanager.searchFile(f"name='{parentName}'")
+            self._parentFileId = files[0]['id']
+        else:
+            self._parentFileId = None
         self._additionalMetadata = additionalMetadata
 
     def run(self):
-        print(self._gdrivemanager.createFile(self._filepath, self._filename, self._parentFileId, self._additionalMetadata))
+        logger = logging.getLogger(__name__)
+        logger.debug(self._gdrivemanager.createFile(self._filepath, self._filename, self._parentFileId, self._additionalMetadata))
 
         return True
