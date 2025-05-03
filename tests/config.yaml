@@ -1,0 +1,33 @@
+# Always use / as a path separator, the script will then re-arrange according to the current platform
+# Paths are intended as relative to the folder where tests.py is stored
+tests:
+  # getfiles requires no arguments, you can omit this line
+  getfiles: null
+  # search only require a filename to be searched from Google Drive
+  search: 
+    filename: "test.txt"
+  # get requires the filename whose metadata will be retrieved from Google Drive
+  get: 
+    filename: "test.txt"
+  # download requires the filename to be downloaded from Google Drive and a local path where to store the downloaded file
+  download: 
+    filename: "test.txt"
+    outputPath: "secret/test.txt"
+  # update requires the filename to be updated on Google Drive, the filepath whose content will be uploaded into Google Drive
+  # and a dictionary object that specifies the metadata of the file on Google Drive (can be null)
+  update: 
+    filename: "test.txt"
+    filepath: "secret/update.txt"
+    metadata: null
+  # create requires the filename to be updated on Google Drive, the filepath whose content will be uploaded into Google Drive
+  # a parentName that specifies the folder where to store the new file (can be null if should be stored in the root folder of the drive)
+  # and a dictionary object that specifies the metadata of the file on Google Drive (can be null)
+  create: 
+    filepath: "secret/test.txt"
+    filename: "newtest.txt"
+    parentName: "GDriveFileManagerTests"
+    additionalMetadata: null
+  # delete requires the filename to be deleted from Google Cloud
+  # BEWARE in case multiple files exist with the same name (even in different folders), a random match will be deleted
+  delete: 
+    filename: "newtest.txt"
