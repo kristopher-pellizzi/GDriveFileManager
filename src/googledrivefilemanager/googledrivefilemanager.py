@@ -273,6 +273,7 @@ class GoogleDriveFileManager(object):
     def createFile(self, filePath, filename, parentFileId, additionalMetadata=None):
         """
             Creates a new file, with the content of filePath and the specified metadata, if any.
+            If parentFileId is None, the file will be created into the root folder of Google Drive (if the used service accounts has permissions)
             This method implements a resumable upload.
             More info at https://developers.google.com/workspace/drive/api/reference/rest/v3/files/update
         """
@@ -280,7 +281,8 @@ class GoogleDriveFileManager(object):
         url = gdrive_create_file_upload_url
         
         metaData = additionalMetadata if additionalMetadata is not None else dict()
-        metaData.update({'name': filename, 'parents': [parentFileId]})
+        parentsList = [parentFileId] if parentFileId is not None else []
+        metaData.update({'name': filename, 'parents': parentsList})
 
         init_res = self._makeRequest('POST', url, json = metaData)
 
