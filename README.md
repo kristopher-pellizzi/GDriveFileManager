@@ -12,7 +12,9 @@ The Google Drive File Manager methods simply assume that the service account onl
 ### File Search
 The current implementation comes with a **heavy limitation** related to file search.
 Google Drive allows multiple files to be stored with the same name, even if they are stored in the same folder.
+
 The Google Drive API that perform file search based on the filename will return a list of all the files with the given filename the used service account has access to.
+
 This means that when the user calls methods to update and/or delete a file, the current implementation of the Google Drive File Manager will select a ***RANDOM*** entry.
 
 #### Example
